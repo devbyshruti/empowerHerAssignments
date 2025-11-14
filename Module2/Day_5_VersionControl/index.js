@@ -7,3 +7,12 @@ function isPrime(num) {
             return false;
     } return true;
 } console.log(isPrime(7));
+
+//Function to check if a number is even or odd
+function evenOdd(num) {
+    if(num%2===o) {
+        return true;
+    } else {
+        return false;
+    }
+}
