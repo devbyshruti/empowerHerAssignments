@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 1px 1px 2px;
+        padding: 10px 20px;
+        margin: 0;
+    }
+   nav{
+    display: flex;
+    align-items: center;
+    gap:20px
+   }
+   h1{
+    margin-right:38px;
+    margin-left: 3px;
+    color: blue;
+    border: 2px solid rgb(81, 209, 81);
+    padding: 5px;
+}
+button{
+    background-color: red;
+    color: yellow;
+    padding: 10px;
+    border: none;
+} 
+ a{
+    font-size:30px;
+    text-decoration: none;
+}
+main{
+    padding: 20px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,auto);
+    gap: 20px;
+}
+.card{
+    padding: 15px;
+    background-color: red;
+    text-align: center;
+    color: white;
+    width: 360px;
+    height: 280px
+}
+.card p{
+    font-size: 20px;
+}
+.card img {
+    width: 89px;
+
+}
+.card button{
+    background-color: white;
+    color: red;
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+@media (max-width:1024px){
+    .grid{
+     grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width: 600px) {
+    .grid{
+        grid-template-columns: repeat(1,1fr)
+    }
+}
+   </style>
+</head>
+<body>
+   <div class="container">   
+   <nav>
+    <h1> Domino's Pizza </h1>
+    <a href="#">Our Menu</a>
+    <a href="#">Domino's stories</a>
+    <a href="#">Gift Card</a>
+    <a href="#">corporate enquiry</a>
+    <a href="#">Contact</a>
+    <button> Download App</button>
+   </nav> 
+   </div>
+   <main>
+    <section>
+        <h2>Order</h2>
+        <div class="grid"> 
+            <div class="card">      
+            <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png"  alt="veg pizza">
+            <h3>Veg Pizza</h3>
+            <p>A delight for veggie lovers! Choose from our wide range of delicious vegetarian pizzas, it's softer and testier </p>
+            <button>View All</button>
+            </div>
+
+            <div class="card">
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png"  alt="Pizza">
+                <h3>Our Menu</h3>
+                <p>Indulge into mouth-watering taste of Pizza mania range, perfect answer to all your food cravings</p>
+                <button>View All</button>
+            </div>
+            <div class="card">
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png" width="50px" alt="Pizza">
+                <h3>Our Menu</h3>
+                <p>Choose your favorite non-veg pizzas frpm the Domino's Pizza menu. Get fresh non-veg pizza with your choice of crust and toppings.</p>
+                <button>View All</button>
+            </div>
+            <div class="card">
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png" width="50px" alt="Pizza">
+                <h3>Our Menu</h3>
+                <p>Choose your favorite non-veg pizza from the Domino's Pizza menu.Get fresh non-veg pizza with your choice of crust and toppings</p>
+                <button>View All</button>
+            </div>
+            <div class="card">
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png"width="50px"  alt="Pizza">
+                <h3>Our Menu</h3>
+                <p>A delight for veggie lovers! Choose from our wide range of delicious vegetarian pizzas, it's softer and testier</p>
+                <button>View All</button>
+            </div>
+            <div class="card">
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png" width="50px" alt="Pizza">
+                <h3>Our Menu</h3>
+                <p>Indulge into mouth-watering taste of Pizza mania range, perfect answer to all your food cravings</p>
+                <button>View All</button>
+            </div>
+        </div>
+    </section>
+   </main>
+   
+</body>
+</html>
