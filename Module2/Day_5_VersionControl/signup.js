@@ -9,3 +9,13 @@ function signup(userName) {
     }
 }
 console.log(signup("sam"));
+
+function login(userName, password) {
+    if (!users.includes(userName)) {
+        return "User Not Found, Please Signup";
+    } else if (password === "Emp@123") {
+        return "Login Succesful...";
+    } else {
+        return "Wrong Password...";
+    }
+}
