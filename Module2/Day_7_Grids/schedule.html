@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>    
+    .parent{
+        display: grid;
+        grid-template-columns: repeat(6,auto);
+        gap:20px;
+        width: 60%;
+        margin: auto;
+    }
+    .parent > div{
+        background-color: rgb(195, 212, 226);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+    .parent > div:first-child{
+        visibility: hidden;
+    }
+    .parent>div:last-child{
+        grid-column: span 6;
+        background-color: rgb(132, 214, 214);
+        text-align: left;
+        justify-content: start;
+    }
+    .parent>div:nth-child(even){
+        background-color: rgb(218, 110, 128);
+    }
+     .parent>div:nth-child(odd){
+        background-color: rgb(231, 231, 63);
+    }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div>Empty</div>
+    <div>Monday</div>
+    <div>Tuesday</div>
+    <div>Wednesday</div>
+    <div>Thursday</div>
+    <div>Friday</div>
+
+    <div>00:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+ 
+    <div>09:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+   <div>10:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <div>11:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+      <div>12:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+      <div>13:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+      <div>14:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+      <div>15:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+      <div>16:00</div>
+     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <div>Note:</div>
+
+</div>
+</body>
+</html>
