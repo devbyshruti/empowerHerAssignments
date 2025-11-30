@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="main-heading">DOM</h1>
+    <p>This is paragraph 1</p>
+    <p>This is paragraph 2</p>
+     <p>This is paragraph 3</p>
+     <div class="container">
+        <p>Inside the container</p>
+     </div>
+
+     <script>
+        const heading=document.getElementById("main-heading");
+        heading.textContent="Welcome to the DOM World!";
+
+        const paragraph = document.getElementsByTagName("p");
+        for(let i=0;i<paragraph.length;i++){
+             paragraph[i].style.color="blue";
+        }
+        const containerDev=document.querySelector(".container");
+        containerDev.style.backgroundColor = "yellow";
+     </script>
+
+
+</body>
+</html>

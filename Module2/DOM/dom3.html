@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="colorInput" type="text" placeholder="Enter color">
+    <button id="changeColorBtn">Change Background</button><br><br>
+
+     <input id="textInput" type="text" placeholder="Enter text">
+    <button id="UpdateTextbtn">Update Text</button><br><br>
+
+    <div id="box">Initial Text</div>
+
+    <script>
+        const box = document.querySelector("#box");
+        const colorInput = document.querySelector("#colorInput");
+         const textInput = document.querySelector("#textInput");
+          const changeColorBtn = document.querySelector("#changeColorbtn");
+           const UpdateBtn = document.querySelector("#updateTextBtnt");
+
+           function validColor(name) {
+            const test = new Option().style;
+            test.color = name;
+            return test.color !=="";
+           }
+           
+    </script>
+</body>
+</html>
