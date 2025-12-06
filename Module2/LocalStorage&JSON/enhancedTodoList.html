@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button id="addBtn">Add Task</button><br><br>
+
+       <input type="text" id="searchInput" placeholder="Search tasks...">
+    <ul id="taskList"></ul>
+
+    <script>
+    const taskInput =document.getElementById("taskInput");
+    const addBtn =document.getElementById("addBtn");
+    const searchInput =document.getElementById("searchInput");
+    const taskList =document.getElementById("taskList");
+
+    let tasks=[];
+
+    window.addEventListener("load", () => {
+        const saved = localStorage.getItem("tasks");
+        if(saved){
+            tasks = JSON.parse(saved);
+            render(tasks);
+        }
+    });
+
+    function save() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    }
+
+    function render(list) {
+        taskList.innerHTML= "";
+        list.forEach(task => {
+            const li = document.createElement("li");
+            li.textContent = task.text;
+
+            if(task.completed) {
+                li.style.textDecoration = "line-through";
+            }
+            li.addEventListener("click", () => {
+                task.completed=!task.completed;
+                save();
+                render(tasks);
+            });
+
+            const del = document.createElement("button");
+            del.textContent = "Delete";
+
+            del.addEventListener("click", (e) => {
+                e.stopPropagation();
+                tasks = tasks.filter(t => t.id !==task.id);
+                save();
+                render(tasks);
+            });
+            li.appendChild(del);
+            taskList.appendChild(li);
+
+        });
+    }
+     addBtn.addEventListener("click", () => {
+        const text = taskInput.value.trim();
+        if(text === "") return;
+
+        tasks.push({
+            id: Date.now(),
+            text:text,
+            completed:false
+        });
+        save();
+        render(tasks);
+        taskInput.value="";
+     });
+
+     searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const filtered = tasks.filter(t => t.text.toLowerCase().includes(query));
+        render(filtered);
+     })
+</script>
+</body>
+</html>
