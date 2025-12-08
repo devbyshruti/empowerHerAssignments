@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        #todoList > div{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid hsl(0, 0%, 87%);
+            border-radius: 6px;
+            margin:  8px;
+        }
+        button{
+            padding: 6px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius:  6px;
+        }
+        .delete {
+            background: red;
+            color: white;
+        }
+        .toggle{
+            background: green;
+            color: white;
+            margin-right:  10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <h2>Todo Application</h2>
+    <div id="todoList"></div>
+    <script>
+        const API_URL = "https://jsonplaceholder.typicode.com/todos";
+        const STORAGE_KEY = "todos";
+
+        async function fetchTodos() {
+            try{
+                const response = await fetch(API_URL);
+                const todos = await response.json();
+                const firstTwenty = todos.slice(0,20);
+
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(firstTwenty));
+                renderTodos();
+            } catch (error) {
+                console.log("Error fetching data:", error);
+            }
+        }
+        function getStoredTodos() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        }
+
+        function saveTodos(todos) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+        }
+
+        function deleteTodo(id) {
+            let todos = getStoredTodos();
+            todos = todos.filter(todo => todo.id !==id);
+            saveTodos(todos);
+            renderTodos();
+        }
+
+        function toggleTodo(id) {
+            const todos = getStoredTodos();
+            const todo = todos.find(t => t.id === id);
+            todo.completed = !todo.completed;
+
+            saveTodos(todos);
+            renderTodos();
+        }
+
+        function renderTodos(){
+            const todoList = document.getElementById("todoList");
+            const todos = getStoredTodos();
+
+            todoList.innerHTML = "";
+
+            if(todos.length === 0) {
+                todoList.innerHTML = "<p>No Todos Available</p>";
+                return;
+            }
+
+            todos.forEach(todo => {
+                const div = document.createElement("div");
+
+                div.innerHTML = `
+                <span class="${todo.completed ? 'completed' : ''}">${todo.title}</span>`;
+
+                const toggleBtn = document.createElement("button");
+                toggleBtn.innerText = todo.completed ? "Undo" : "Completed";
+                toggleBtn.className = "toggle";
+                toggleBtn.onclick = () => toggleTodo(todo.id);
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.innerText= "Delete";
+                deleteBtn.className = "delete";
+                deleteBtn.onclick = () => deleteTodo(todo.id);
+
+                div.appendChild(toggleBtn);
+                div.appendChild(deleteBtn);
+
+                todoList.appendChild(div);
+            });
+
+        }
+
+        if(!localStorage.getItem(STORAGE_KEY)) {
+            fetchTodos();
+        } else{
+            renderTodos();
+        }
+    </script>
+</body>
+</html>
