@@ -3,6 +3,7 @@ import Calculator from "./Props&StateManagement/Calculator/calculator";
 import UserProfile from "./Props&StateManagement/UserProfile/UserProfile";
 import MessageCard from "./Props&StateManagement/MessageCard/MessageCard";
 import FirstComponent from "./FirstComponent";
+import SideEffect from "./assignments/HandlingSideEffectsWithUseEffect/SideEffect";
 
 function App() {
   return(
@@ -16,6 +17,7 @@ function App() {
     <MessageCard title="Card 2" message="Reusable Component" />
 
     <UserProfile />
+    <SideEffect />
     </div>
    )
 }
