@@ -4,6 +4,7 @@ import UserProfile from "./Props&StateManagement/UserProfile/UserProfile";
 import MessageCard from "./Props&StateManagement/MessageCard/MessageCard";
 import FirstComponent from "./FirstComponent";
 import SideEffect from "./assignments/HandlingSideEffectsWithUseEffect/SideEffect";
+import StatusToggle from "./assignments/StylingInReact/StatusToogle/StatusToggle";
 
 function App() {
   return(
@@ -18,6 +19,7 @@ function App() {
 
     <UserProfile />
     <SideEffect />
+    <StatusToggle />
     </div>
    )
 }
