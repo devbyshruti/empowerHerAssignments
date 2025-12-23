@@ -5,6 +5,10 @@ import MessageCard from "./Props&StateManagement/MessageCard/MessageCard";
 import FirstComponent from "./FirstComponent";
 import SideEffect from "./assignments/HandlingSideEffectsWithUseEffect/SideEffect";
 import StatusToggle from "./assignments/StylingInReact/StatusToogle/StatusToggle";
+import VideoPlayer from "./assignments/UseRef&PropsDrilling/VideoPlayer";
+import PropsDrilling from "./assignments/UseRef&PropsDrilling/PropsDrilling/PropsDrilling";
+import Component1 from "./assignments/ContextAPI/AppContext/Component1";
+import Todos from "./assignments/ContextAPI/TodoApplication/Todos";
 
 function App() {
   return(
@@ -20,6 +24,10 @@ function App() {
     <UserProfile />
     <SideEffect />
     <StatusToggle />
+    <VideoPlayer />
+    <PropsDrilling />
+    <Component1 />
+    <Todos />
     </div>
    )
 }
