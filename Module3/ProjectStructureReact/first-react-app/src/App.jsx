@@ -1,5 +1,5 @@
+import AppRouter from "./assignments/ReactRouting2/AppRouter";
 
-import AppRouter from "./assignments/ReactRouting/AppRouter";
 
 function App() {
   return(
