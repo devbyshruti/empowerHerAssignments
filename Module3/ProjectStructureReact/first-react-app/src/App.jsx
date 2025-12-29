@@ -1,10 +1,11 @@
-import AppRouter from "./assignments/ReactRouting2/AppRouter";
+import MultiStepForm from "./assignments/stateManagementWithUseReducer/MultiStepForm";
 
 
 function App() {
   return(
     <div>
-    <AppRouter />
+    <h1>User Registration</h1>
+    <MultiStepForm />
     
     </div>
    )
