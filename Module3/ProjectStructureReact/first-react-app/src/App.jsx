@@ -1,11 +1,10 @@
-import MultiStepForm from "./assignments/stateManagementWithUseReducer/MultiStepForm";
+import ProductPage from "./assignments/PerformanceOptimization/ProductPage";
 
 
 function App() {
   return(
     <div>
-    <h1>User Registration</h1>
-    <MultiStepForm />
+    <ProductPage />
     
     </div>
    )
