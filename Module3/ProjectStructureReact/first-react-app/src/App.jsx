@@ -1,10 +1,10 @@
-import ProductPage from "./assignments/PerformanceOptimization/ProductPage";
+import Parent from "./assignments/PerformanceOptimization2/Parent";
 
 
 function App() {
   return(
     <div>
-    <ProductPage />
+   <Parent />
     
     </div>
    )
