@@ -1,13 +1,16 @@
-import Parent from "./assignments/PerformanceOptimization2/Parent";
+import { Routes, Route } from "react-router-dom";
+import TodoList from "./assignments/Axios/pages/TodoList";
+import TodoDetails from "./assignments/Axios/pages/TodoDetails";
 
 
 function App() {
   return(
-    <div>
-   <Parent />
+    <Routes>  
+     <Route path="/" element={<TodoList />} />
+      <Route path="/todo/:id" element={<TodoDetails />} />
+    </Routes>
     
-    </div>
-   )
+   );
 }
 
 export default App;
