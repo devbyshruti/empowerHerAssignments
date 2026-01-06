@@ -1,16 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import TodoList from "./assignments/Axios/pages/TodoList";
-import TodoDetails from "./assignments/Axios/pages/TodoDetails";
+import FeedbackFrom from "./assignments/ShadCN/components/FeedbackForm";
+import ImageSlideshow from "./assignments/ShadCN/components/ImageSlideshow";
+import TodoList from "./assignments/ShadCN/components/TodoApp";
 
 
-function App() {
-  return(
-    <Routes>  
-     <Route path="/" element={<TodoList />} />
-      <Route path="/todo/:id" element={<TodoDetails />} />
-    </Routes>
-    
+export default function App() {
+  return( 
+    <div>
+      <FeedbackFrom />
+      <ImageSlideshow />
+      <TodoList />
+    </div>
    );
 }
 
-export default App;
+

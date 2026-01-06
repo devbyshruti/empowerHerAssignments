@@ -3,6 +3,6 @@ export const getTodos = () => {
     return axiosInstance.get("/todos");
 };
 
-export const getTodosById = (id) => {
+export const getTodoById = (id) => {
     return axiosInstance.get(`/todos/${id}`);
 }
