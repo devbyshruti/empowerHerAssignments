@@ -1,15 +1,23 @@
-import FeedbackFrom from "./assignments/ShadCN/components/FeedbackForm";
-import ImageSlideshow from "./assignments/ShadCN/components/ImageSlideshow";
-import TodoList from "./assignments/ShadCN/components/TodoApp";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ProtectedRoute } from "./assignments/app/routes";
 
 
 export default function App() {
   return( 
-    <div>
-      <FeedbackFrom />
-      <ImageSlideshow />
-      <TodoList />
-    </div>
+   <BrowserRouter>
+   <Routes>
+    <Route path="/login" element={<Login />} />
+    <Route path="/signup" element={<Signup />} />
+    <Route
+    path="/todos"
+    element={
+      <ProtectedRoute>
+        <Todos />
+      </ProtectedRoute>
+    }
+    />
+   </Routes>
+   </BrowserRouter>
    );
 }
 
