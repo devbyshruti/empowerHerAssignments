@@ -1,0 +1,96 @@
+1. Aggregate Queries
+
+Query 1: SELECT COUNT(*) AS total_students FROM students;
+Output:
+total_students
+5
+
+Query 2: SELECT AVG(age) AS average_age FROM students;
+Output:
+average_age
+22
+
+Query 3: SELECT MIN(age) AS min_age, MAX(age) AS max_age FROM students;
+Output:
+min_age | max_age
+18      | 24
+
+Query 4: SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course;
+
+Output: 
+course                 | student_count
+Backend Development    | 1
+Data Science           | 1
+Full Stack Development | 2
+
+2. Grouping & Filtering
+
+Query 1: SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course;
+
+Output: 
+course                 | student_count
+Backend Development    | 1
+Data Science           | 1
+Full Stack Development | 2
+
+Query 2: SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course
+HAVING COUNT(*) > 1;
+
+Output: 
+course                 | student_count
+Full Stack Development | 2
+
+Query 3: SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course
+ORDER BY student_count DESC;
+
+Output: 
+course                 | student_count
+Full Stack Development | 2
+Backend Development    | 1
+Data Science           | 1
+
+3. Ordering & Limiting
+
+Query 1: Fetch the latest 3 students based on created_at
+SELECT *
+FROM students
+ORDER BY created_at DESC
+LIMIT 3;
+
+Output:
+id | name          | age| course
+2  | Anita Verma   | 24 | Full Stack Development
+3  | Rudra Singh   | 18 | Full Stack Development
+4  | Amisha Sharma | 23 | Data Science
+
+Query 2: Fetch the top 5 oldest students
+SELECT *
+FROM students
+ORDER BY age DESC
+LIMIT 5;
+
+Output:
+id | name          | age| course
+2  | Anita Verma   | 24 | Full Stack Development
+4  | Amisha Sharma | 23 | Data Science
+1  | Ruhi Sharma   | 23 | Backend Development
+3  | Rudra Singh   | 18 | Full Stack Development
+
+Query 3:
+SELECT *
+FROM students
+WHERE course = 'Full Stack Development'
+ORDER BY age DESC;
+
+Output:
+id | name          | age| course
+2  | Anita Verma   | 24 | Full Stack Development
+3  | Rudra Singh   | 18 | Full Stack Development
