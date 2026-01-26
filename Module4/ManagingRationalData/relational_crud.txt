@@ -1,0 +1,127 @@
+Step 1: Create Tables with Relationship
+
+Table 1: users
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+Output: Success. No rows returned
+
+Table 2: orders
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  amount INTEGER NOT NULL,
+  status TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+Output: Success. No rows returned
+
+                               -------------------------------------
+
+Step 2: Insert Data
+
+INSERT INTO users (name, email) VALUES
+('Amit Sharma', 'amit@gmail.com'),
+('Neha Verma', 'neha@gmail.com'),
+('Rohit Verma', 'rohit@gmail.com'),
+('Pooja Mehta', 'pooja@gmail.com'),
+('Karan Patel', 'karan@gmail.com');
+
+INSERT INTO orders (user_id, amount, status) VALUES
+(1, 1200, 'Placed'),
+(1, 2500, 'Delivered'),
+(2, 1800, 'Placed'),
+(2, 3000, 'Delivered'),
+(2, 1500, 'Cancelled'),
+(3, 2200, 'Placed'),
+(4, 900, 'Delivered'),
+(5, 4500, 'Placed'),
+(5, 2000, 'Delivered');
+
+                          -------------------------------------------
+ Step 3: Read Data (Relational Reads)
+
+ SELECT * FROM users;
+SELECT * FROM orders;
+SELECT * FROM orders 
+WHERE user_id = 2;
+
+Output:
+
+    | id | user_id | amount | status    | created_at                 |
+| -- | ------- | ------ | --------- | -------------------------- |
+| 3  | 2       | 1800   | Placed    | 2026-01-26 17:05:07.249441 |
+| 4  | 2       | 3000   | Delivered | 2026-01-26 17:05:07.249441 |
+| 5  | 2       | 1500   | Cancelled | 2026-01-26 17:05:07.249441 |  
+
+SELECT u.id, u.name, COUNT(o.id) AS order_count
+FROM users u
+JOIN orders o ON u.id = o.user_id
+GROUP BY u.id, u.name
+HAVING COUNT(o.id) > 1;
+
+Output:
+| id | name        | order_count |
+| -- | ----------- | ----------- |
+| 2  | Neha Verma  | 3           |
+| 5  | Karan Patel | 2           |
+| 1  | Amit Sharma | 2           |
+
+SELECT u.name, SUM(o.amount) AS total_amount
+FROM users u
+JOIN orders o ON u.id = o.user_id
+GROUP BY u.name;
+
+Output: 
+
+| name        | total_amount |
+| ----------- | ------------ |
+| Pooja Mehta | 900          |
+| Rohit Verma | 2200         |
+| Amit Sharma | 3700         |
+| Neha Verma  | 6300         |
+| Karan Patel | 6500         |
+
+                                      -------------------------------------------
+
+Step 4: Update Data
+
+1. 
+UPDATE users
+SET email = 'amit.sharma@gmail.com'
+WHERE id = 1;
+
+2.
+UPDATE orders
+SET status = 'Delivered'
+WHERE user_id = 2;
+
+3.
+UPDATE orders
+SET amount = 5000
+WHERE id = 8;
+                              --------------------------------------------
+
+Step 5: Delete Data
+
+1. 
+DELETE FROM orders
+WHERE id = 7;
+
+2.
+DELETE FROM orders
+WHERE user_id = 3;
+
+3.
+DELETE FROM orders
+WHERE id = 1;
+
+Output: Success. No rows returned
+Observation: Deletation failed because the user has existing orders.
+Foreign key constraint prevents deleting parent records.
